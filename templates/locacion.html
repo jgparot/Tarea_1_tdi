@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}
+    Locacion
+{% endblock %}
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+    </div>
+    <div class="col-6">
+      <h1>Locación: {{ locacion['name'] }}</h1>
+
+<h2>Tipo: {{ locacion['type'] }}</h2>
+
+<h2>Dimensión: {{ locacion['dimension'] }}</h2>
+
+<h2>Residentes</h2>
+<table class="table">
+  <tbody>
+  {% for item in residentes %}
+
+    <tr>
+      <td><a href="{{ url_for('personaje',name= item['id']|string)}}">{{item['name']}}</a>
+</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+    </div>
+    <div class="col">
+
+    </div>
+  </div>
+
+</div>
+{% endblock %}

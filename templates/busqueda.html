@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block title %}
+  busqueda
+{% endblock %}
+{% block content %}
+
+<div class="container">
+<div class="row">
+    <div class="col">
+
+    </div>
+    <div class="col-5">
+      <h1>Has buscado {{ data }}</h1>
+        <h2>Aparece en:</h2>
+    </div>
+    <div class="col">
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Locaciónes</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for item in locaciones %}
+    <tr>
+      <td><a href="{{ url_for('locacion',name= item['id']|string)}}">{{item['name']}}</a>
+</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+    </div>
+    <div class="col-6">
+      <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Personajes</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for item in personajes %}
+    <tr>
+      <td><a href="{{ url_for('personaje',name= item['id']|string)}}">{{item['name']}}</a>
+</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+    </div>
+    <div class="col">
+      <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Episodios</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for item in capitulos %}
+    <tr>
+      <td><a href="{{ url_for('episodio',name= item['id']|string)}}">{{item['name']}}</a>
+</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

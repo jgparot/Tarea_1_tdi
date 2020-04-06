@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}
+    Personajes
+{% endblock %}
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+    </div>
+    <div class="col-6">
+
+<h1>{{ personaje['name'] }}</h1>
+
+<img src="{{ personaje['image'] }}" alt="Personaje">
+
+<h2>Estatus: {{ personaje['status'] }}</h2>
+
+<h2>Especie: {{ personaje['species'] }}</h2>
+
+<h2>Género: {{ personaje['gender'] }}</h2>
+{% if personaje['origin']['name'] == 'unknown' %}
+<h2>Origen: {{personaje['origin']['name']}}</h2>
+{% else %}
+<h2>Origen: <a href="{{ url_for('locacion',name= l_o|string)}}">{{personaje['origin']['name']}}</a></h2>
+{% endif %}
+
+{% if personaje['location']['name'] == 'unknown' %}
+<h2>Origen: {{personaje['location']['name']}}</h2>
+{% else %}
+<h2>Locación Actual: <a href="{{ url_for('locacion',name=l_a|string)}}">{{personaje['location']['name']}}</a></h2>
+{% endif %}
+
+<h2>Episodios en los que aparece</h2>
+<table class="table">
+  <tbody>
+  {% for item in episodios %}
+    <tr>
+      <td><a href="{{ url_for('episodio',name= item['id']|string)}}">{{item['name']}}</a>
+</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+    </div>
+    <div class="col">
+    </div>
+  </div>
+
+</div>
+{% endblock %}

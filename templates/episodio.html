@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}
+    Episodio
+{% endblock %}
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+    </div>
+    <div class="col-6">
+      <h1>{{ episodio['name'] }}</h1>
+
+<h2>Fecha de lanzmiento: {{ episodio['air_date'] }}</h2>
+
+<h2>Número de episodio: {{ episodio['episode'] }}</h2>
+<h2>Personajes involucrados</h2>
+
+<table class="table">
+
+  <tbody>
+  {% for item in personajes %}
+    <tr>
+      <td><a href="{{ url_for('personaje',name= item['id']|string)}}">{{item['name']}}</a>
+</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+    </div>
+    <div class="col">
+
+    </div>
+  </div>
+
+
+
+
+</div>
+{% endblock %}
